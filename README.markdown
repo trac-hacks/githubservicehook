@@ -3,7 +3,7 @@ GitHub Service Hook Plugin for Trac
 
 Adds your git commit messages as comments to your track tickets.
 If a commit pushed to your github project contains a trac ticket number like
-#123 anywhere in the commit message, this trac plugin will add your commit
+`#123` anywhere in the commit message, this trac plugin will add your commit
 message as a comment to your trac ticket, like this:
 
     Sean Hammond c814c9f5c9b94389bbc169d305f58f779f232d52
@@ -27,9 +27,9 @@ The code is based on
 
 - It adds your git commit messages to your trac tickets, I don't think
   github-trac does that.
-- It will find any use of #123 in a commit message, not just commands like "see
-  #123", "closes #123", etc. It will even find things like (#123) or [#123].
-- It doesn't automatically close trac tickets if you say "closes #123" etc. in
+- It will find any use of `#123` in a commit message, not just commands like `see
+  #123`, `closes #123`, etc. It will even find things like `(#123)` or `[#123]`.
+- It doesn't automatically close trac tickets if you say `closes #123` etc. in
   your git commits, we didn't want that (this could be added as an optional
   behaviour).
 - It doesn't do trac source code browser redirects.
