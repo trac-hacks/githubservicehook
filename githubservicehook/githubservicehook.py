@@ -48,11 +48,13 @@ class GitHubServiceHookPlugin(Component):
         # Get the git commit message.
         msg = '''{author} [{url} {id}]
 
-{message}'''.format(
-                author=commit['author']['name'],
-                url=commit['url'],
-                id=commit['id'],
-                message=commit['message'])
+{{{{{{
+{message}
+}}}}}}
+'''.format(author=commit['author']['name'],
+           url=commit['url'],
+           id=commit['id'],
+           message=commit['message'])
 
         # Find all the #123 strings in the commit message.
         ticket_re = re.compile('#[0-9]*')
