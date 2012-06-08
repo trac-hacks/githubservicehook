@@ -35,25 +35,25 @@ The code is based on
 
 ## Install
 
-1. Install the plugin into your trac project's plugins dir:
+Install the plugin into your trac project's plugins dir:
 
-       cd /path/to/your/trac/project/plugins
-       git clone git://github.com/seanh/githubservicehook.git
-       cd githubservicehook
-       python setup.py install
+    cd /path/to/your/trac/project/plugins
+    git clone git://github.com/seanh/githubservicehook.git
+    cd githubservicehook
+    python setup.py install
 
-2. Enable the github service hook.  Go to the admin panel of your project on
-github and enable the trac service hook. Set URL to your trac instance's URL,
-and set Token to whatever you like.
+Enable the github service hook. Go to the admin panel of your project on github
+and enable the trac service hook. Set URL to your trac instance's URL, and set
+Token to whatever you like.
 
-3. Enable the plugin. Edit your trac.ini file and add:
+Enable the plugin. Add this to the bottom of your trac.ini file:
 
-       [components]
-       githubservicehook.* = enabled
-       
-       [githubservicehook]
-       token = YOUR_TOKEN
+    [components]
+    githubservicehook.* = enabled
+    
+    [githubservicehook]
+    token = YOUR_TOKEN
 
 where YOUR_TOKEN is the same token that you set in your github project.
 
-4. Finally, restart the web server that hosts your trac instance.
+Finally, restart the web server that hosts your trac instance.
