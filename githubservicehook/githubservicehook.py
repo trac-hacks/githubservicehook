@@ -12,17 +12,26 @@ class GitHubServiceHookPlugin(Component):
     token = Option('githubservicehook', 'token', '')
 
     def match_request(self, request):
+        self.env.log.debug(
+            "match_request: {method} -> {path}".format(
+            method=request.method, path=request.path_info))
         if (request.path_info.rstrip('/') == ('/github/%s' % str(self.token))
             and request.method == 'POST'):
             request.form_token = None
+            self.env.log.debug('accepted request')
             return True
         else:
+            self.env.log.debug('refused request')
             return False
 
     def process_request(self, request):
+        self.env.log.debug(
+            "process_request: {method} -> {path}".format(
+            method=request.method, path=request.path_info))
         data = request.args.get('payload')
         if data:
             jsondata = json.loads(data)
+            self.env.log.debug('got json')
             for commit in jsondata['commits']:
                 self.process_commit(commit)
         content = "Thanks!"
@@ -34,6 +43,7 @@ class GitHubServiceHookPlugin(Component):
 
     def process_commit(self, commit):
         '''Process a new git commit.'''
+        self.env.log.debug('process_commit: {commit}'.format(commit=commit))
 
         # Get the git commit message.
         msg = '''{author} [{url} {id}]
@@ -53,11 +63,15 @@ class GitHubServiceHookPlugin(Component):
                 ticket_numbers]
 
         for ticket_number in ticket_numbers:
+            self.env.log.debug(
+                'Found ticket number: {n}'.format(n=str(ticket_number)))
             try:
                 db = self.env.get_db_cnx()
                 ticket = Ticket(self.env, int(ticket_number), db)
                 ticket.save_changes('GitHubServiceHook', msg)
                 db.commit()
+                self.env.log.debug('Comment added')
             except ResourceNotFound, e:
+                self.env.log.debug(
+                    'Ticket not found: {n}'.format(n=str(ticket_number)))
                 continue
-
