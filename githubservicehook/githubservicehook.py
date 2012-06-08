@@ -59,8 +59,8 @@ class GitHubServiceHookPlugin(Component):
         ticket_numbers = ticket_re.findall(msg)
 
         # Turn the ticket numbers into ints.
-        ticket_numbers = [int(ticket_number[1:]) for ticket_number in
-                ticket_numbers]
+        ticket_numbers = set([int(ticket_number[1:]) for ticket_number in
+                ticket_numbers])
 
         for ticket_number in ticket_numbers:
             self.env.log.debug(
