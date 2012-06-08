@@ -12,7 +12,6 @@ class GitHubServiceHookPlugin(Component):
     token = Option('githubservicehook', 'token', '')
 
     def match_request(self, request):
-        import pdb; pdb.set_trace()
         if (request.path_info.rstrip('/') == ('/github/%s' % str(self.token))
             and request.method == 'POST'):
             request.form_token = None
