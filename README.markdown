@@ -20,6 +20,10 @@ message as a comment to your trac ticket, like this:
 The SHA-1 of the commit message will be hyperlinked to the commit's page on
 github.
 
+The commit messages are escaped so they don't accidentally trigger any trac
+wiki formatting (they're placed inside `{{{ ... }}}`'s so trac treats them as
+pre-formatted text).
+
 The code is based on
 [github-trac](https://github.com/davglass/github-trac), but:
 
