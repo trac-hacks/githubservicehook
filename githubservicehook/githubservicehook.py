@@ -25,7 +25,12 @@ class GitHubServiceHookPlugin(Component):
             jsondata = json.loads(data)
             for commit in jsondata['commits']:
                 self.process_commit(commit)
-        return 'Thanks!'
+        content = "Thanks!"
+        request.send_response(200)
+        request.send_header('Content-Type', 'text/plain')
+        request.send_header('Content-Length', len(content))
+        request.end_headers()
+        request.write(content)
 
     def process_commit(self, commit):
         '''Process a new git commit.'''
