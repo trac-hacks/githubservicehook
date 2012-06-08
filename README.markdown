@@ -1,7 +1,7 @@
 GitHub Service Hook Plugin for Trac
 ===================================
 
-Adds your git commit messages as comments to your track tickets.
+Adds your git commit messages as comments to your trac tickets.
 If a commit pushed to your github project contains a trac ticket number like
 `#123` anywhere in the commit message, this trac plugin will add your commit
 message as a comment to your trac ticket, like this:
@@ -10,14 +10,12 @@ message as a comment to your trac ticket, like this:
 
     Lorem Ipsum, see ticket #123
 
-    Lorem Ipsum is simply dummy text of the printing and typesetting industry.
-    Lorem Ipsum has been the industry's standard dummy text ever since the 1500s,
-    when an unknown printer took a galley of type and scrambled it to make a type
-    specimen book. It has survived not only five centuries, but also the leap into
-    electronic typesetting, remaining essentially unchanged. It was popularised in
-    the 1960s with the release of Letraset sheets containing Lorem Ipsum passages,
-    and more recently with desktop publishing software like Aldus PageMaker
-    including versions of Lorem Ipsum.
+    Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor
+    incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+    nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu
+    fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
+    culpa qui officia deserunt mollit anim id est laborum.
 
 The SHA-1 of the commit message will be hyperlinked to the commit's page on
 github.
@@ -39,10 +37,10 @@ The code is based on
 
 1. Install the plugin into your trac project's plugins dir:
 
-    cd /path/to/your/trac/project/plugins
-    git clone git://github.com/seanh/githubservicehook.git
-    cd githubservicehook
-    python setup.py install
+       cd /path/to/your/trac/project/plugins
+       git clone git://github.com/seanh/githubservicehook.git
+       cd githubservicehook
+       python setup.py install
 
 2. Enable the github service hook.  Go to the admin panel of your project on
 github and enable the trac service hook. Set URL to your trac instance's URL,
@@ -50,11 +48,11 @@ and set Token to whatever you like.
 
 3. Enable the plugin. Edit your trac.ini file and add:
 
-    [components]
-    githubservicehook.* = enabled
-
-    [githubservicehook]
-    token = YOUR_TOKEN
+       [components]
+       githubservicehook.* = enabled
+       
+       [githubservicehook]
+       token = YOUR_TOKEN
 
 where YOUR_TOKEN is the same token that you set in your github project.
 
