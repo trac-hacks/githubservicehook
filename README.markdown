@@ -27,8 +27,6 @@ pre-formatted text).
 The code is based on
 [github-trac](https://github.com/davglass/github-trac), but:
 
-- It adds your git commit messages to your trac tickets, I don't think
-  github-trac does that.
 - It will find any use of `#123` in a commit message, not just commands like `see
   #123`, `closes #123`, etc. It will even find things like `(#123)` or `[#123]`.
 - It doesn't automatically close trac tickets if you say `closes #123` etc. in
