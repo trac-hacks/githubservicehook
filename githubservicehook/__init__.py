@@ -1,1 +1,1 @@
-from githubservicehook import githubservicehook
+from githubservicehook import GitHubServiceHookPlugin
